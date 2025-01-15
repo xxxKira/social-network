@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Roboto&display=swap');
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: clamp(15rem, 20%, 20rem);
+  height: 100%;
+  padding: 1rem;
+  justify-items: center;
+  border-right: 1px solid var(--main-color-opacity);
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+/* ------------------ Logo ------------------*/
+.logo {
+  align-self: center;
+  width: 100%;
+}
+
+.logoLink {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--main-color);
+}
+
+.logoLink:hover {
+  background-color: var(--main-color);
+  border-radius: 0.8rem;
+}
+.logoLink:hover .logoIcon {
+  fill: var(--main-color-white);
+}
+
+/* ------------------ */
+
+/* ------------------ List ------------------ */
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.listItem {
+  font-size: 1.2rem;
+  font-style: normal;
+}
+
+.listLink {
+  text-decoration: none;
+  color: var(--main-color);
+
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.8rem;
+
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.listLink:visited {
+  color: var(--main-color);
+}
+
+.listLink:hover {
+  background-color: var(--main-color);
+  color: var(--main-color-white);
+}
+
+/* .listLink:hover .icons path {
+  fill-opacity: 1;
+  } */
+
+.icons {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  stroke: var(--main-color);
+  stroke-width: 0.08rem;
+  fill: none;
+}
+
+.iconHome {
+  padding: 0.15rem;
+  stroke-width: 0.07rem;
+}
+.listLink:hover .icons {
+  fill-opacity: 1;
+  stroke: var(--main-color-white);
+  /* fill: var(--main-color-white); */
+}
+.listLink:hover .userAvatar {
+  border: 0.12rem solid var(--main-color-white);
+}
+
+.userAvatar {
+  border-radius: 50%;
+}
+
+/* ------------------ */
+
+/* ------------------ Hide NavBar ------------------ */
+.navHide {
+  width: 5rem;
+  padding: 0.5rem;
+  min-width: 5rem;
+}
+
+.navHide .listItemName {
+  display: none;
+}
+
+.navHide .icons {
+  margin: 0;
+}
+
+/* ------------------ */
+
+@media (max-width: 720px) {
+  .navigation {
+    width: 5rem;
+    padding: 0.5rem;
+    min-width: 5rem;
+  }
+
+  .listItemName {
+    display: none;
+  }
+
+  .icons {
+    margin: 0;
+  }
+}
