@@ -1,14 +1,14 @@
 import style from './Profile.module.css';
 import UserInformation from './UserInformation';
-import AddPost from './AddPost';
+import AddPostContainer from './AddPostContainer';
 import Post from './Post';
 
-export function Profile({ profile, dispatch }) {
+export function Profile({ profile }) {
   return (
     <div className={style.profile}>
       <div className={style.content}>
         <UserInformation profile={profile} />
-        <AddPost profile={profile} dispatch={dispatch} />
+        <AddPostContainer />
 
         <section className={style.posts}>
           {profile.posts

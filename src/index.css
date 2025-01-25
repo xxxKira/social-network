@@ -2,18 +2,16 @@
 
 :root {
   --main-color: #212529;
-  --main-color-2: #495057;
-  --main-color-white: #f8f9fa;
-  --color-gray: #ced4da;
-  --main-color-opacity: hsla(210, 11%, 15%, 0.1);
+  --main-color-opacity: rgba(34, 38, 42, 0.1);
+  --background: #f8f9fa;
+  --background-color-2: #495057;
 }
 
 .dark--mode {
   --main-color: #f8f9fa;
-  --main-color-2: #ced4da;
-  --main-color-white: #212529;
-  --color-gray: #ced4da;
-  --main-color-opacity: hsla(210, 17%, 98%, 0.1);
+  --main-color-opacity: rgba(249, 250, 251, 0.1);
+  --background: #212529;
+  --background-color-2: #ced4da;
 }
 
 * {
@@ -35,5 +33,5 @@
   flex-direction: row;
   overflow-y: hidden;
   overflow-x: auto;
-  background-color: var(--main-color-white);
+  background-color: var(--background);
 }

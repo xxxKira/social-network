@@ -3,9 +3,13 @@ import { NavLink } from 'react-router';
 
 export function User({ user }) {
   return (
-    <li title={user}>
-      <NavLink to={`/messages/${user.toLowerCase()}`} className={style.user}>
-        {user}
+    <li
+      title={user.userName}
+      // className={style.user}
+      // onClick={() => updateDialogIndex(user.userId)}
+    >
+      <NavLink to={`/messages/${user.userId}`} className={style.user}>
+        {user.userName}
       </NavLink>
     </li>
   );

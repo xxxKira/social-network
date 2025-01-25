@@ -1,42 +1,35 @@
 import style from './Messages.module.css';
 import Message from './Message';
-import {
-  addMessageActionCreator,
-  updateNewMessageTextActionCreator,
-} from './../../Redux/messages-reducer';
 
-export function MessagesField({ state, dispatch }) {
-  function onChangeText(e) {
-    const text = e.target.value;
-    dispatch(updateNewMessageTextActionCreator(text));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(addMessageActionCreator());
-    // btnShowMore.scrollIntoView({ behavior: "smooth" });
-    //TODO: scroll in new message
-  }
-
+export default function MessagesField({
+  messagesPage,
+  onChangeText,
+  handleSubmit,
+}) {
   function onEnterPress(e) {
     if (e.key === 'Enter' && !e.shiftKey && 'form' in e.target) {
       e.preventDefault();
       e.target.form.requestSubmit();
     }
   }
-
   return (
     <section className={style.messagesField}>
       <div className={style.messages}>
-        {state.messagePage.messages[0].messages.map((el, i) => (
-          <Message messages={el} user={state.profilePage.username} key={i} />
-        ))}
+        {messagesPage.dialogs.map((el) => {
+          if (el.userId === messagesPage.dialogIndex) {
+            const user = el.userName;
+            return el.messages.map((el, i) => (
+              <Message messages={el} key={i} user={user} />
+            ));
+          }
+          return null;
+        })}
       </div>
       <form className={style.messageForm} onSubmit={handleSubmit}>
         <textarea
           placeholder='Enter message text...'
           className={style.messageInput}
-          value={state.messagePage.messageText}
+          value={messagesPage.messageText}
           onChange={onChangeText}
           onKeyDown={onEnterPress}
         ></textarea>

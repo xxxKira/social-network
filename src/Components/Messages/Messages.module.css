@@ -59,12 +59,13 @@ a {
 
 .user:hover {
   background-color: var(--main-color);
-  color: var(--main-color-white);
+  color: var(--background);
 }
 
 .messagesField {
   flex: 4;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 0 1rem 0;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -77,11 +78,7 @@ a {
   flex-direction: column;
   overflow-y: auto;
   gap: 1rem;
-  padding: 1rem 0;
-}
-
-.messages::-webkit-scrollbar {
-  display: none;
+  padding: 1.5rem 1rem;
 }
 
 .message {
@@ -90,14 +87,14 @@ a {
   word-break: break-all;
   flex-wrap: wrap;
   background-color: var(--main-color);
-  color: var(--main-color-white);
+  color: var(--background);
   border-radius: 1rem;
   white-space: pre-wrap;
 }
 
 .message.myMessage {
   align-self: flex-end;
-  background-color: var(--main-color-2);
+  background-color: var(--background-color-2);
 }
 
 .message.userMessage {
@@ -110,6 +107,7 @@ a {
   border-radius: 1rem;
   border: 0.2rem solid var(--main-color);
   padding-right: 1rem;
+  margin: 0 1rem;
   align-items: center;
 }
 
@@ -130,7 +128,7 @@ a {
   width: 0.3rem;
 }
 .messageInput::-webkit-scrollbar-track {
-  background: var(--main-color-white);
+  background: var(--background);
 }
 .messageInput::-webkit-scrollbar-thumb {
   background: var(--main-color);

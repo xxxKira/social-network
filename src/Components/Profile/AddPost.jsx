@@ -1,22 +1,10 @@
 import style from './Profile.module.css';
 import { Button } from './../Button/Button';
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from './../../Redux/profile-reducer';
 
-export default function AddPost({ profile, dispatch }) {
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(addPostActionCreator());
-  }
-  function onPostChange(e) {
-    const text = e.target.value;
-    dispatch(updateNewPostTextActionCreator(text));
-  }
+export default function AddPost({ profile, onSubmit, updateNewPostText }) {
   return (
     <section className={style.addPost}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <label name='post' htmlFor='postText'>
           {profile.posts.length === 0
             ? 'Add your first post!'
@@ -27,9 +15,9 @@ export default function AddPost({ profile, dispatch }) {
           className={style.postsTextfield}
           placeholder='Enter your post message...'
           value={profile.postText}
-          onChange={onPostChange}
+          onChange={updateNewPostText}
         ></textarea>
-        <Button className={style.button}>Add post</Button>
+        <Button>Add post</Button>
       </form>
     </section>
   );

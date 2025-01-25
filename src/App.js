@@ -1,29 +1,19 @@
-import { NavBar } from './Components/NavBar/NavBar';
-import { Profile } from './Components/Profile/Profile';
-import { MessagesPage } from './Components/Messages/Messages';
+import { ProfileContainer } from './Components/Profile/ProfileContainer';
+import { MessagesPageContainer } from './Components/Messages/MessagesPageContainer';
+import SearchContainer from './Components/Search/SearchContainer';
 import './index.css';
 import { Route, Routes } from 'react-router';
-import { handleSidebar } from './Redux/sidebar-reducer';
+import { NavBarContainer } from './Components/NavBar/NavBarContainer';
 
-function App({ state, dispatch }) {
-  window.addEventListener('load', () => {
-    if (window.location.href.includes('messages')) {
-      dispatch(handleSidebar(true));
-    }
-  });
-
+function App() {
   return (
     <div className='App dark--mode'>
-      <NavBar state={state} dispatch={dispatch} />
+      <NavBarContainer />
       <Routes>
-        <Route
-          path='/profile'
-          element={<Profile profile={state.profilePage} dispatch={dispatch} />}
-        />
-        <Route
-          path='/messages'
-          element={<MessagesPage state={state} dispatch={dispatch} />}
-        />
+        <Route path='/profile' element={<ProfileContainer />} />
+        <Route path='/messages/' element={<MessagesPageContainer />} />
+        <Route path='/messages/:userId' element={<MessagesPageContainer />} />
+        <Route path='/search/' element={<SearchContainer />} />
         {/* <Route path='/profile' element={<Home />} /> */}
       </Routes>
     </div>

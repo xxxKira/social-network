@@ -6,8 +6,8 @@ export default function Message({ messages, user }) {
       <pre
         className={`${style.message} ${
           messages.sender.toLowerCase() === user.toLowerCase()
-            ? `${style.myMessage}`
-            : `${style.userMessage}`
+            ? `${style.userMessage}`
+            : `${style.myMessage}`
         }`}
       >
         {messages.message}

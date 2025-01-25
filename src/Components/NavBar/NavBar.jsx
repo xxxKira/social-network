@@ -1,14 +1,15 @@
-import { handleSidebar } from '../../Redux/sidebar-reducer';
+import { useState } from 'react';
+// import { handleSidebar } from '../../Redux/sidebar-reducer';
 import style from './NavBar.module.css';
 import { NavLink } from 'react-router';
 
-export function NavBar({ state, dispatch }) {
+export function NavBar({ state }) {
+  const [hideNav, setHideNav] = useState(
+    window.location.href.includes('messages')
+  );
+
   return (
-    <div
-      className={`${style.navigation} ${
-        state.sidebar.navHide ? `${style.navHide}` : ''
-      }`}
-    >
+    <div className={`${style.navigation} ${hideNav ? `${style.navHide}` : ''}`}>
       <span className={style.logo}>
         <NavLink to='/home' className={style.logoLink}>
           <svg
@@ -25,7 +26,7 @@ export function NavBar({ state, dispatch }) {
       </span>
       <nav>
         <ul className={style.list}>
-          <Item dispatch={dispatch} state={false}>
+          <Item onHideNav={setHideNav}>
             <svg
               viewBox='0 0 16 16'
               xmlns='http://www.w3.org/2000/svg'
@@ -47,7 +48,7 @@ export function NavBar({ state, dispatch }) {
             <span className={style.listItemName}>Home</span>
           </Item>
 
-          <Item dispatch={dispatch} state={false}>
+          <Item onHideNav={setHideNav}>
             <svg
               viewBox='0 0 24 24'
               xmlns='http://www.w3.org/2000/svg'
@@ -62,7 +63,7 @@ export function NavBar({ state, dispatch }) {
             <span className={style.listItemName}>Search</span>
           </Item>
 
-          <Item dispatch={dispatch} state={true}>
+          <Item onHideNav={setHideNav}>
             <svg viewBox='0 0 24 24' fill='none' className={style.icons}>
               <path
                 d='M7.76953 4.58009C8.57706 3.74781 9.54639 3.08958 10.6178 2.64588C11.6892 2.20219 12.84 1.98233 13.9995 2.00001C18.4195 2.00001 21.9995 5.10005 21.9995 8.92005C21.9792 9.98209 21.7021 11.0234 21.1919 11.9551C20.6817 12.8867 19.9535 13.681 19.0696 14.27V16.75'
@@ -78,7 +79,7 @@ export function NavBar({ state, dispatch }) {
 
             <span className={style.listItemName}>Messages</span>
           </Item>
-          <Item dispatch={dispatch} state={false}>
+          <Item onHideNav={setHideNav}>
             <svg
               viewBox='0 0 24 24'
               xmlns='http://www.w3.org/2000/svg'
@@ -97,7 +98,7 @@ export function NavBar({ state, dispatch }) {
             </svg>
             <span className={style.listItemName}>Notification</span>
           </Item>
-          <Item dispatch={dispatch} state={false}>
+          <Item onHideNav={setHideNav}>
             <img
               src={state.profilePage.avatar}
               alt='User Avatar'
@@ -111,12 +112,12 @@ export function NavBar({ state, dispatch }) {
   );
 }
 
-function Item({ children, dispatch, state }) {
+function Item({ children, onHideNav }) {
   return (
     <li
       className={style.listItem}
       title={children[1].props.children}
-      onClick={() => dispatch(handleSidebar(state))}
+      onClick={() => onHideNav(window.location.href.includes('messages'))}
     >
       <NavLink
         to={`/${children[1].props.children.toLowerCase()}`}
